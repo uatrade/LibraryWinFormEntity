@@ -39,13 +39,23 @@ namespace LibraryWinFormEntity
             using (Library3Entities db = new Library3Entities())
             {
 
-                var authors = (from a in db.Author where a.LastName.Contains(tbFind.Text) select new { a.FirstName, a.LastName });
+                var authors = (from a in db.Author where a.LastName.Contains(tbFind.Text) select new { a.Id, a.LastName}).ToList();
 
-                if(authors!=null)
-                dataGridViewAuthor.DataSource = authors.ToList();
+                var books = db.Book.Join(authors,
+                    b => b.IdAuthor,
+                    a => a.Id,
+                    (b, c)=>new
+                    {
+                        Titels = b.Title,
+                        Names=c.LastName
+                    }
+                    );
+
+                 if (books != null)
+                    dataGridViewAuthor.DataSource = books.ToList();
             }
         }
-
+         
         private void tbFind_TextChanged(object sender, EventArgs e)
         {
 
