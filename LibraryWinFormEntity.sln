@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2047
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryWinFormEntity", "LibraryWinFormEntity\LibraryWinFormEntity.csproj", "{F4F70317-3EF1-414A-936C-26B1ADB890DB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F4F70317-3EF1-414A-936C-26B1ADB890DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4F70317-3EF1-414A-936C-26B1ADB890DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4F70317-3EF1-414A-936C-26B1ADB890DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4F70317-3EF1-414A-936C-26B1ADB890DB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ECFBAF0B-5D3D-465B-96BA-1A5E30A5D0C9}
+	EndGlobalSection
+EndGlobal
