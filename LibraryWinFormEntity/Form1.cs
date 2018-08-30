@@ -16,19 +16,6 @@ namespace LibraryWinFormEntity
         {
             InitializeComponent();
 
-            //var columnAuthorName = new DataGridViewColumn();
-            //columnAuthorName.CellTemplate = new DataGridViewTextBoxCell();
-
-            //var columnAuthorLastName = new DataGridViewColumn();
-            //columnAuthorLastName.CellTemplate = new DataGridViewTextBoxCell();
-
-            //var columnBookTitle = new DataGridViewColumn();
-            //columnBookTitle.CellTemplate = new DataGridViewTextBoxCell();
-
-            //dataGridViewAuthor.Columns.Add(columnAuthorName);
-            //dataGridViewAuthor.Columns.Add(columnAuthorLastName);
-            //dataGridViewAuthor.Columns.Add(columnBookTitle);
-
         }
 
         private void btFind_Click(object sender, EventArgs e)
@@ -39,20 +26,21 @@ namespace LibraryWinFormEntity
             using (Library3Entities db = new Library3Entities())
             {
 
-                var authors = (from a in db.Author where a.LastName.Contains(tbFind.Text) select new { a.Id, a.LastName}).ToList();
+                var books = db.Book.Join(db.Author,
+                        b=>b.IdAuthor,
+                        a=>a.Id,
 
-                var books = db.Book.Join(authors,
-                    b => b.IdAuthor,
-                    a => a.Id,
-                    (b, c)=>new
-                    {
-                        Titels = b.Title,
-                        Names=c.LastName
-                    }
+                        (b, a)=> new
+                        {
+                            b.Title,
+                            a.LastName
+                        }
                     );
 
-                 if (books != null)
-                    dataGridViewAuthor.DataSource = books.ToList();
+                var books2 = (from x in books where x.LastName.Contains(tbFind.Text) select new { x.Title, x.LastName });
+
+                 if (books2 != null)
+                    dataGridViewAuthor.DataSource = books2.ToList();
             }
         }
          
